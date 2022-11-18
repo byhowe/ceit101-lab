@@ -1,5 +1,6 @@
 # file parser
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Generator
 import functools
@@ -17,16 +18,21 @@ class person:
         return self.weight / self.height**2
 
 
-def load(filepath: str) -> Generator[person, None, None]:
+def openlines(filepath: str) -> Generator[str, None, None]:
     with open(filepath, "r") as f:
-        return (
-            person(l[0:12].strip(), float(l[12:24]), float(l[24:36]))
-            for l in f.readlines()[1:]
-        )
+        next(f)
+        yield from f
+
+
+def load(filepath: str) -> Generator[person, None, None]:
+    return (
+        person(l[0:12].strip(), float(l[12:24]), float(l[24:36]))
+        for l in openlines(filepath)
+    )
 
 
 def save(
-    persons: list[person],
+    persons: Iterable[person],
     avg_height: float,
     avg_weight: float,
     avg_bmi: float,
@@ -38,10 +44,7 @@ def save(
     min_bmi: float,
     file=sys.stdout,
 ):
-    print(
-        "{:12s}{:12s}{:12s}{:12s}".format("Name", "Height(m)", "Weight(kg)", "BMI"),
-        file=file,
-    )
+    print("{:12s}{:12s}{:12s}{:12s}".format("Name", "Height(m)", "Weight(kg)", "BMI"), file=file)
     for p in persons:
         print("{:<12s}{:<12.2f}{:<12.2f}{:<12.2f}".format(p.name, p.height, p.weight, p.bmi), file=file)
     print(file=file)
