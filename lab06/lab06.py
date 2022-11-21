@@ -15,7 +15,7 @@ def load(filepath: str) -> Generator[StudentInfo, None, None]:
     with open(filepath, "rt") as f:
         splitlines = (l.split() for l in f)
         for e in splitlines:
-            name = e[0] + e[1]
+            name = e[0] + ' ' + e[1]
             scores = list(map(int, e[2:]))
             mean = sum(scores) / len(scores)
             yield (name, *scores, mean)
