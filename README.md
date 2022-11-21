@@ -14,3 +14,5 @@ This repository includes my solutions for the assignments.
   Leap year, rotate, digit count, float check.
 - [`LAB_05`](https://github.com/byhowe/ceit101-lab/tree/development/lab05)
   Text file parser.
+- [`LAB_06`](https://github.com/byhowe/ceit101-lab/tree/development/lab06)
+  Display grades in a table.
