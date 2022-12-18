@@ -16,5 +16,7 @@ This repository includes my solutions for the assignments.
   Text file parser.
 - [`LAB_06`](https://github.com/byhowe/ceit101-lab/tree/development/lab06)
   Display grades in a table.
+- [`LAB_07`](https://github.com/byhowe/ceit101-lab/tree/development/lab07)
+  Count first digits.
 - [`LAB_08`](https://github.com/byhowe/ceit101-lab/tree/development/lab08)
   Count words in documents.
